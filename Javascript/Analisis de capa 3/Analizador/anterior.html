@@ -1,0 +1,99 @@
+<!DOCTYPE>
+<html>
+<head>
+ <script src="jquery.js"></script> 
+ <script src="FileSaver.js"></script>
+ 
+</head>
+<body>
+<button id="save-btn" style="display: none">Descargar</button>
+<button id="btnExport" onclick="fnExcelReport();"> EXPORT </button>
+
+<!--iframe id="txtArea1" style="display:none"></iframe-->
+
+<table id="testTable" style="width:100%">
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th> 
+    <th>Age</th>
+  </tr>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td> 
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td> 
+    <td>94</td>
+  </tr>
+</table>
+
+
+
+
+
+
+</body>
+</html>
+
+<br>
+<br>
+<input type="file" id="file-input" name="files[]" multiple />
+<h4>Informacion del archivo</h4>
+<output id="list"></output>
+
+<h4>Subinterfaces:</h4>
+<!--input type="text" name="subinterface" id="subinterface" ><br><br-->
+
+
+<textarea rows="7" cols="50" name="subint" id="subint">
+ingresar las subinterfaces
+</textarea><br><br>
+
+
+<!--button type="button" id="runscript" onclick="mostrarContenido(contenido)">Correr Script</button-->
+<button type="button" id="runscript" onclick="Analizar()">Correr Script</button>
+
+<!--button type="button" id="hacertxt" onclick="WriteToFile()">hacer txt</button-->
+
+<div id="loading">
+    <!--img src="/images/user_profile/ajax-loading.gif" alt="Loading.." /-->
+	<img src="ruedita.gif" alt="Loading.." />
+	<!--img src="jesus.gif" alt="Loading.." /-->
+</div><br><br>
+
+<!--textarea id="textbox">Type something here</textarea-->
+<!--button id="create">Create file</button--> 
+<a download="OUTPUT.txt" id="downloadlink" style="display: none">Download</a>
+
+<script src="funcionesRED.js"></script>  
+<script>
+
+	$("#save-btn").click(function() {
+	//var blob = new Blob(["test text"], {type: "text/plain;charset=utf-8"});
+	var blob = new Blob(Salida, {type: "text/plain;charset=utf-8"});
+	
+	saveAs(blob, "OUTPUT.txt");
+	});
+	
+	
+	$("#runscript").click(function() {
+		var mostrar;
+		mostrar = document.getElementById("save-btn").style.display = "block"; //muestra el loading...
+	});
+
+	$("testTable").tableExport({
+		formats: ["xlsx","txt", "csv"], //Tipo de archivos a exportar ("xlsx","txt", "csv", "xls")
+		position: 'button',  // Posicion que se muestran los botones puedes ser: (top, bottom)
+		bootstrap: false,//Usar lo estilos de css de bootstrap para los botones (true, false)
+		fileName: "ListadoPaises",    //Nombre del archivo 
+	});
+
+</script>
+
+<!--pre id="probando" name="prueba">43453453</pre-->
+
+		
+<h3>Contenido del archivo:</h3>
+<pre id="contenido-archivo"></pre>

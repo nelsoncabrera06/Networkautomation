@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Configuracion futura</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <!--link href="dist/css/tableexport.css" rel="stylesheet" type="text/css"-->
+
+  <!--link href="estilo.css" rel="stylesheet" type="text/css"-->
+  <style>
+  table {
+    border: 1px solid black;
+    border-collapse: separate;
+    padding: 1px;
+    border-spacing: 7px;
+    font-size: 12px;
+  }
+  table#mitabla {
+    width: 100%;
+    background-color: #DBE7ED;
+  }
+  </style>
+
+
+</head>
+<body onload="cargardatos()">
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <a class="navbar-brand" href="#">Analizador</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+</nav>
+
+
+
+<div class="container" style="margin-top:30px">
+  <div class="row">
+    <div class="col-sm-12">
+      <!--contenido de mi pagina-->
+  <!--a href="http://localhost:8080/analizador/Analizador.html">&nbsp;&nbsp;Home&nbsp;&nbsp;</a-->
+  <a href="../Analizador.html">&nbsp;&nbsp;Home&nbsp;&nbsp;</a>
+  <a href="http://localhost:8080">&nbsp;&nbsp;localhost&nbsp;&nbsp;</a>
+  <a href="equiposymodelos.html">&nbsp;&nbsp;Equipos y modelos&nbsp;&nbsp;</a>
+  <!-- Add icon library para el download button-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <br>
+    <!--  EQUIPO	IP	MARCA	MODELO
+      SSJ4MU	181.96.23.193	HUAWEI	CX600-X16A
+      EZE1MU	181.88.172.214	HUAWEI	CX600-X8A -->
+
+      <div id="algo">Ingrese el EQUIPO a buscar </div>
+      <input type="text" name="equipos" id="equipoabuscar">
+      <button type="button" id="buscarmodelo" onclick="buscarmodelo()">Buscar modelo</button>
+      <output id="respuesta"></output><br>
+      <!--br><br-->
+      <!--input type="file" id="file-input" style="margin-top:10px" style="margin-bottom:10px" marginLeft  name="files[]" multiple /-->
+      <!--p id="respuestaMyFile"></p-->
+      <!--br-->
+      <a id="trasporte">¿Los servicios vienen por Transporte? = </a>
+      <input type="checkbox" id="transportecheck" onclick="lochequearon()">
+      <output id="SVLANtransporte" style="display:none"></output>
+      <input type="text" id="SVLANinput" style="display:none"><br>
+      <a>Ingrese la interface futura</a><br>
+      <input type="text" name="interfaceFUTURA" id="interfaceFUTURA"><br><br>
+      <button type="button" id="Configfutura" onclick="Configfutura()">Configuración FUTURA</button>
+      <a id="downloadtxt" download="OUTPUT_ConfigFUTURA.txt" href=”” ><i class="fa fa-download"></i> Download txt</a>
+      <!--br><br-->
+      <a id="descargarenexceltext">  Descargar en excel => </a>
+      <input type="checkbox" id="descargarenexcelcheck" onclick="ExportFileExcel()">
+
+      <!--button id="export" onclick = "ExportFileExcel()" >Export File</button-->
+      <div id="configuracion"></div>
+      <br>
+
+
+      <!--input type="file" id="file-input" style="margin-top:10px" style="margin-bottom:10px" marginLeft  name="files[]" multiple /-->
+      <!--HR-->
+      <!--HR width="20%"-->
+      <!--button type="button" id="runscript" onclick="leerArchivo2()">cargar tabla</button-->
+      <!--button type="button" id="runscript" onclick="agregarFila3('ATR PERRO')">cargar en tabla</button-->
+        <!--FIN contenido de mi pagina-->
+
+  <table id="mitabla">
+    <thead>
+      <tr>
+      <th>Instancia</th>
+      <th>Configuración FUTURA</th>
+      </tr>
+    </thead>
+    <tbody id="tablacuerpo">
+    </tbody>
+  </table>
+<br><br>
+
+		<script>
+
+			$("#save-btn").click(function() {
+			//var blob = new Blob(["test text"], {type: "text/plain;charset=utf-8"});
+			var blob = new Blob(Salida, {type: "text/plain;charset=utf-8"});
+
+			saveAs(blob, "OUTPUT - Salida.txt");
+			});
+
+
+			$("#runscript").click(function() {
+				var mostrar;
+				mostrar = document.getElementById("save-btn").style.display = "block"; //muestra el loading...
+			});
+
+		</script>
+
+  </div>
+</div>
+
+
+
+
+	<footer class="footer fixed-bottom">
+      <div class="container">
+        <span class="text-muted">Nelson Cabrera &copy 2020</span>
+      </div>
+    </footer>
+
+</body>
+<!-- Llamar a los complementos javascript-->
+<script src="jquery-1.12.4.min.js"></script>
+<script src="FileSaver.min.js"></script>
+<script src="Blob.min.js"></script>
+<script src="xls.core.min.js"></script>
+<script src="dist/js/tableexport.js"></script>
+<script src="funcionesRED2.js"></script>
+
+<script lang="javascript" src="xlsx.full.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+
+<script src="mijavascript.js"></script>
+<script src="armarconfigfutura.js"></script>
+
+
+</html>

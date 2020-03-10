@@ -1,0 +1,19 @@
+	table {
+	  border: 1px solid black;
+	  border-collapse: separate;
+	  padding: 1px;
+	  border-spacing: 7px;
+	  font-size: 12px;
+	}
+	table#mitabla {
+	  width: 100%;
+	  background-color: #DBE7ED;
+	}
+  
+  body {
+    width: 600px;
+    margin: 0 auto;
+    background-color: #FF9500;
+    padding: 0 20px 20px 20px;
+    border: 5px solid black;
+  }

@@ -1,0 +1,6 @@
+disp curr configuration qos-profile 4M
+disp curr configuration qos-profile 4M
+disp curr conf bgp | begin 181.96.109.138
+disp int desc | inc Eth-trunk22
+disp int desc | inc Eth-trunk22.15420007
+disp curr | inc 181.96.109.138

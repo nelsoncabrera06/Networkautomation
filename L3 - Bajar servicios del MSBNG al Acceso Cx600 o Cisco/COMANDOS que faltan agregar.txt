@@ -1,0 +1,10 @@
+AVD2MU#sh bgp vrf vpn-personal-voz summary | inc 10.100.5.154
+
+AVD2MU#sh bgp vrf vpn-personal-voz summary
+
+AVD2MU#sh bgp vrf vpn-personal-voz neighbors 10.100.5.154 routes 
+
+
+<REC3MU>disp bgp vpnv4 vpn-instance vpn-personal-voz routing-table peer 10.100.6.90 received-routes
+
+<REC3MU>disp bgp vpnv4 vpn-instance vpn-personal-voz routing-table peer 10.100.6.90 received-routes statistics 
